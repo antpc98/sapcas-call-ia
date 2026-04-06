@@ -17,3 +17,5 @@ Construir una base técnica estable para:
 - no subir secretos
 - no trabajar directamente sobre main
 - documentar cambios relevantes
+
+
