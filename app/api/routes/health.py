@@ -1,34 +1,32 @@
 """
 Router de health check.
 
-Este archivo define endpoints muy simples cuyo objetivo es comprobar
-que la API está levantada y respondiendo correctamente.
+Este archivo define un endpoint simple para comprobar si la API está viva.
 
-¿Por qué esto es importante?
-- Porque permite validar rápido si la app vive.
-- Porque ayuda a detectar si el problema es del servidor o de otra capa.
-- Porque más adelante servirá para pruebas en Docker, despliegues y monitoring.
+¿Por qué esto importa?
+- Permite validar rápidamente que FastAPI arranca.
+- Sirve como primer endpoint funcional del proyecto.
+- Es útil para pruebas locales, Docker y despliegues futuros.
 """
 
 from fastapi import APIRouter
 
-# Creamos un router independiente.
-# Un router agrupa endpoints relacionados por responsabilidad.
+# APIRouter permite agrupar endpoints relacionados.
 router = APIRouter()
 
 
 @router.get("/")
 def health_check() -> dict:
     """
-    Endpoint de comprobación del estado de la API.
-
-    Devuelve un diccionario simple para indicar:
-    - que el servicio está vivo
-    - el nombre del servicio
-    - la versión actual
+    Endpoint de comprobación del estado del servicio.
 
     Ruta final:
     GET /health
+
+    Devuelve:
+    - status: indica si el servicio responde
+    - service: nombre lógico del servicio
+    - version: versión actual de la aplicación
     """
     return {
         "status": "ok",

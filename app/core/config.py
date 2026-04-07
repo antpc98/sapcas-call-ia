@@ -1,16 +1,16 @@
 """
-Configuración central de la aplicación.
+Módulo de configuración central de la aplicación.
 
 Objetivo:
-- Tener en un único sitio la configuración importante del servicio.
-- Evitar valores hardcodeados repartidos por muchos archivos.
-- Facilitar que en el futuro podamos usar variables de entorno (.env)
-  sin tener que rehacer la arquitectura.
+- Centralizar la configuración básica del servicio.
+- Evitar valores hardcodeados repartidos por distintos archivos.
+- Preparar el proyecto para que, más adelante, pueda leer variables
+  de entorno y configuración externa sin rehacer la arquitectura.
 
-Usamos pydantic-settings porque:
-- permite definir configuración tipada,
-- valida tipos,
-- y es una forma limpia y moderna de gestionar settings.
+En esta Fase 0 solo definimos lo mínimo:
+- nombre de la app
+- versión
+- entorno de ejecución
 """
 
 from pydantic_settings import BaseSettings
@@ -20,18 +20,14 @@ class Settings(BaseSettings):
     """
     Clase de configuración principal.
 
-    Cada atributo aquí definido representa una configuración del sistema.
-
-    En esta v0.1 dejamos solo lo básico:
-    - nombre de la aplicación
-    - versión
-    - entorno actual
-
-    Más adelante aquí añadiremos:
-    - claves de Twilio
-    - parámetros de base de datos
+    Cada atributo representa una configuración del sistema.
+    En el futuro aquí añadiremos:
+    - configuración de base de datos
+    - credenciales de Twilio
     - nivel de logs
-    - otros valores de entorno
+    - flags de features
+
+    De momento mantenemos la base simple para no complicar la Fase 0.
     """
 
     app_name: str = "Sapcas Call IA"
@@ -39,5 +35,5 @@ class Settings(BaseSettings):
     app_env: str = "local"
 
 
-# Creamos una instancia única que importaremos desde otros módulos.
+# Instancia única reutilizable en toda la aplicación.
 settings = Settings()

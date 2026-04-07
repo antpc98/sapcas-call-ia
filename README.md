@@ -19,3 +19,10 @@ Construir una base técnica estable para:
 - documentar cambios relevantes
 
 
+## requirements.txt
+```bash
+fastapi: framework web
+uvicorn[standard]: servidor ASGI para ejecutar FastAPI
+pydantic: validación y modelos tipados
+pydantic-settings: configuración centralizada y preparada para .env
+```
