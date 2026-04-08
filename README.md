@@ -26,3 +26,13 @@ uvicorn[standard]: servidor ASGI para ejecutar FastAPI
 pydantic: validación y modelos tipados
 pydantic-settings: configuración centralizada y preparada para .env
 ```
+
+## Fase 1
+Se añade un flujo simulado de entrada de llamada mediante:
+
+- `api/routes/test_input.py`
+- `schemas/call.py`
+- `services/session_service.py`
+- `services/conversation_service.py`
+
+Esto permite validar el primer flujo conversacional sin Twilio real.
